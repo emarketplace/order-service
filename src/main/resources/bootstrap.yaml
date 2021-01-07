@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: ${SPRING_ACTIVE_PROFILE}
+  #kubernetes properties
+  cloud:
+    kubernetes:
+      config:
+        enabled: false
+      #paths: /etc/config/application.yaml
+      #spring.cloud.kubernetes.reload.enabled= true
+      #spring.cloud.kubernetes.reload.strategy defaults to refresh. Can be also set to restart_context or shutdown
+      reload:
+        strategy: refresh
+      discovery:
+        all-namespaces: true
+
+server:
+  port: 7004
+  servlet:
+    context-path: /api
+
+springdoc:
+  swagger-ui:
+    path: /order-service/api-specs.html
+  api-docs:
+    enabled: true
+    path: /order-service/api-specs
+
+management:
+  metrics:
+    tags:
+      application: order-service
+  endpoint:
+    restart:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
