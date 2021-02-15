@@ -23,10 +23,10 @@ server:
 
 springdoc:
   swagger-ui:
-    path: /order-service/api-specs.html
+    path: /order-service-docsapi-specs.html
   api-docs:
     enabled: true
-    path: /order-service/api-specs
+    path: /order-service-docs/api-specs
 
 management:
   metrics:
